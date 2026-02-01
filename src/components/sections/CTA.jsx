@@ -57,27 +57,27 @@ function SpeakingRobot({ isSpeaking }) {
 
                 {/* Eyes */}
                 <Sphere args={[0.2, 32, 32]} position={[-0.4, 0.2, 0.8]} ref={eyeLeftRef}>
-                    <meshStandardMaterial 
-                        color={isSpeaking ? "#ff00ff" : "#00ffff"} 
-                        emissive={isSpeaking ? "#ff00ff" : "#00ffff"} 
-                        emissiveIntensity={isSpeaking ? 3 : 2} 
+                    <meshStandardMaterial
+                        color={isSpeaking ? "#ff00ff" : "#00ffff"}
+                        emissive={isSpeaking ? "#ff00ff" : "#00ffff"}
+                        emissiveIntensity={isSpeaking ? 3 : 2}
                     />
                 </Sphere>
                 <Sphere args={[0.2, 32, 32]} position={[0.4, 0.2, 0.8]} ref={eyeRightRef}>
-                    <meshStandardMaterial 
-                        color={isSpeaking ? "#ff00ff" : "#00ffff"} 
-                        emissive={isSpeaking ? "#ff00ff" : "#00ffff"} 
-                        emissiveIntensity={isSpeaking ? 3 : 2} 
+                    <meshStandardMaterial
+                        color={isSpeaking ? "#ff00ff" : "#00ffff"}
+                        emissive={isSpeaking ? "#ff00ff" : "#00ffff"}
+                        emissiveIntensity={isSpeaking ? 3 : 2}
                     />
                 </Sphere>
 
                 {/* Floating Ring / Body Halo */}
                 <Torus args={[1.6, 0.1, 16, 100]} rotation={[1.5, 0, 0]} ref={ringRef}>
-                    <meshStandardMaterial 
-                        color={isSpeaking ? "#ff00ff" : "#7c3aed"} 
-                        emissive={isSpeaking ? "#ff00ff" : "#7c3aed"} 
-                        emissiveIntensity={isSpeaking ? 0.8 : 0.5} 
-                        wireframe 
+                    <meshStandardMaterial
+                        color={isSpeaking ? "#ff00ff" : "#7c3aed"}
+                        emissive={isSpeaking ? "#ff00ff" : "#7c3aed"}
+                        emissiveIntensity={isSpeaking ? 0.8 : 0.5}
+                        wireframe
                     />
                 </Torus>
 
@@ -148,9 +148,14 @@ export default function CTA() {
                         transition={{ delay: 0.4 }}
                         className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12"
                     >
-                        <button className="px-8 py-4 bg-primaryGlow text-black text-lg font-bold rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(0,255,255,0.4)]">
+                        <a
+                            href="https://www.instagram.com/100xsolutions.live?igsh=ZTVnbTdvbWhkcXJ4"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-8 py-4 bg-primaryGlow text-black text-lg font-bold rounded-full hover:bg-white hover:scale-105 transition-all duration-300 shadow-[0_0_20px_rgba(0,255,255,0.4)]"
+                        >
                             Get Started
-                        </button>
+                        </a>
                         <button className="px-8 py-4 bg-transparent border-2 border-primaryGlow/50 text-primaryGlow text-lg font-bold rounded-full hover:bg-primaryGlow/10 hover:border-primaryGlow transition-all duration-300">
                             Book a Free Strategy Call
                         </button>
@@ -168,11 +173,10 @@ export default function CTA() {
                             onClick={toggleSpeaking}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
-                            className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-300 ${
-                                isSpeaking 
-                                    ? 'bg-primaryGlow/20 border-primaryGlow shadow-[0_0_30px_rgba(0,255,255,0.5)]' 
+                            className={`w-full px-6 py-4 rounded-2xl border-2 transition-all duration-300 ${isSpeaking
+                                    ? 'bg-primaryGlow/20 border-primaryGlow shadow-[0_0_30px_rgba(0,255,255,0.5)]'
                                     : 'bg-white/5 border-white/20 hover:border-primaryGlow/50'
-                            }`}
+                                }`}
                         >
                             <div className="flex items-center justify-center gap-3">
                                 <div className="flex gap-1 items-end h-6">

@@ -2,32 +2,42 @@ import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Sphere, MeshDistortMaterial, Float, Stars, Sparkles } from '@react-three/drei'
 
-function Core() {
-    const meshRef = useRef()
+function ParticleNetwork() {
+    const points = useRef()
+    const lightRef = useRef()
 
     useFrame((state) => {
         const time = state.clock.getElapsedTime()
-        if (meshRef.current) {
-            meshRef.current.rotation.x = time * 0.2
-            meshRef.current.rotation.y = time * 0.3
+        if (points.current) {
+            points.current.rotation.y = time * 0.05
+            points.current.rotation.x = time * 0.02
+        }
+        if (lightRef.current) {
+            lightRef.current.intensity = 1.5 + Math.sin(time * 2) * 0.5
         }
     })
 
     return (
-        <Float speed={2} rotationIntensity={1} floatIntensity={2}>
-            <Sphere args={[1.5, 64, 64]} ref={meshRef}>
-                <MeshDistortMaterial
-                    color="#00ffff"
-                    attach="material"
-                    distort={0.4}
-                    speed={2}
-                    roughness={0.2}
-                    metalness={0.8}
-                    emissive="#00aaaa"
-                    emissiveIntensity={0.5}
-                />
-            </Sphere>
-        </Float>
+        <group ref={points}>
+            <pointLight ref={lightRef} color="#00ffff" intensity={2} distance={10} />
+            <Sparkles
+                count={2000}
+                scale={10}
+                size={2}
+                speed={0.3}
+                opacity={0.6}
+                color="#00ffff"
+            />
+            <Sparkles
+                count={1000}
+                scale={15}
+                size={4}
+                speed={0.1}
+                opacity={0.4}
+                color="#7c3aed"
+            />
+            <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+        </group>
     )
 }
 
@@ -40,10 +50,9 @@ export default function HeroScene() {
                 <pointLight position={[10, 10, 10]} color="#7c3aed" intensity={1} />
                 <pointLight position={[-10, -10, -10]} color="#00ffff" intensity={1} />
 
-                <Core />
+                <ParticleNetwork />
 
                 <Sparkles count={500} scale={10} size={2} speed={0.4} opacity={0.5} noise={0.2} color="#ffffff" />
-                <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
 
                 <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} maxPolarAngle={Math.PI / 1.5} minPolarAngle={Math.PI / 3} />
             </Canvas>

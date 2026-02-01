@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, Sphere, MeshDistortMaterial, Cone, Torus } from '@react-three/drei'
+import { Float, Sphere, MeshDistortMaterial, Cone, Torus, OrbitControls } from '@react-three/drei'
 
 function FriendlyRobot() {
     const headRef = useRef()
@@ -11,10 +11,10 @@ function FriendlyRobot() {
     useFrame((state) => {
         const t = state.clock.getElapsedTime()
         if (headRef.current) headRef.current.position.y = Math.sin(t * 1) * 0.1
-        if (ringRef.current) ringRef.current.rotation.x = t * 0.5
-        if (ringRef.current) ringRef.current.rotation.y = t * 0.3
-
-        // Glowing blinking eyes logic could go here, for now just constant glow
+        if (ringRef.current) {
+            ringRef.current.rotation.x = t * 0.5
+            ringRef.current.rotation.y = t * 0.3
+        }
     })
 
     return (
@@ -63,6 +63,7 @@ export default function RobotScene() {
                 <pointLight position={[-10, -5, -10]} intensity={0.5} color="#7c3aed" />
 
                 <FriendlyRobot />
+                <OrbitControls enableZoom={false} />
             </Canvas>
         </div>
     )
