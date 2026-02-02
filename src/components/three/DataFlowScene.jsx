@@ -1,11 +1,11 @@
 import { Canvas } from '@react-three/fiber'
 import { Float, Text, RoundedBox } from '@react-three/drei'
 
-function DataCube({ position, color, label, delay = 0 }) {
+function DataCube({ position, color, label }) {
     return (
         <Float speed={2} rotationIntensity={0.5} floatIntensity={1} floatingRange={[-0.2, 0.2]}>
             <group position={position}>
-                <RoundedBox args={[1.8, 1.8, 0.2]} radius={0.1} smoothness={4} className="cursor-pointer">
+                <RoundedBox args={[1.8, 1.8, 0.2]} radius={0.1} smoothness={4}>
                     <meshPhongMaterial color={color} transparent opacity={0.8} shininess={100} specular="#ffffff" />
                 </RoundedBox>
                 <Text
@@ -22,11 +22,6 @@ function DataCube({ position, color, label, delay = 0 }) {
             </group>
         </Float>
     )
-}
-
-function ConnectionLine({ start, end, color }) {
-    // Simple line or just implicit connection via layout
-    return null
 }
 
 export default function DataFlowScene() {
