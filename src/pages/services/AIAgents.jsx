@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const AIAgents = () => {
     useEffect(() => {
@@ -59,9 +60,9 @@ const AIAgents = () => {
                     className="p-12 rounded-[3rem] bg-gradient-to-br from-accent/10 to-transparent border border-white/5 text-center relative z-10"
                 >
                     <h2 className="text-3xl font-bold text-white mb-6">Ready to automate your team?</h2>
-                    <a href="/contact" className="inline-block px-10 py-4 bg-accent text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(124,58,237,0.4)] transition-all active:scale-95">
+                    <Link to="/contact" className="inline-block px-10 py-4 bg-accent text-white font-bold rounded-full hover:shadow-[0_0_30px_rgba(124,58,237,0.4)] transition-all active:scale-95">
                         Build My Agent
-                    </a>
+                    </Link>
                 </motion.div>
             </div>
         </section>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const WebDev = () => {
     useEffect(() => {
@@ -51,9 +52,9 @@ const WebDev = () => {
                     className="p-12 rounded-[3rem] bg-gradient-to-br from-primaryGlow/10 to-transparent border border-white/5 text-center"
                 >
                     <h2 className="text-3xl font-bold text-white mb-6">Ready to build your dream site?</h2>
-                    <a href="/contact" className="inline-block px-10 py-4 bg-primaryGlow text-black font-bold rounded-full hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transition-all active:scale-95">
+                    <Link to="/contact" className="inline-block px-10 py-4 bg-primaryGlow text-black font-bold rounded-full hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] transition-all active:scale-95">
                         Start Project
-                    </a>
+                    </Link>
                 </motion.div>
             </div>
         </section>
